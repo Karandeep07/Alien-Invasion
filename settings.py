@@ -11,4 +11,7 @@ class Settings:
         self.screen_height = 600
         # self.bg_color = (230, 230, 230)     
         self.bg_image = pygame.image.load('images/background.png')
+
+        # Ship settings
+        self.ship_speed = 1.5
         
