@@ -6,10 +6,10 @@ from ship import Ship
 from bullet import Bullet
 
 class AlienInvasion:
-    """Overall class to manage game assets and behavior"""
+    """Overall class to manage game assets and behavior."""
 
     def __init__(self):
-        """Initialize the game & create game resources"""
+        """Initialize the game & create game resources."""
         pygame.init()
         self.settings = Settings()
         
@@ -30,7 +30,7 @@ class AlienInvasion:
         self.bullets = pygame.sprite.Group()
 
     def run_game(self):
-        """Start the main loop for the game"""
+        """Start the main loop for the game."""
         while True:
             self._check_events()
             self.ship.update()
