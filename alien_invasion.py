@@ -34,8 +34,22 @@ class AlienInvasion:
         while True:
             self._check_events()
             self.ship.update()
-            self.bullets.update()
+            self._update_bullets()
             self._update_screen()
+            
+
+    def _update_bullets(self):
+            """Update the positions of bullets and get rid of old bullets"""
+            # Update bullet positions
+            self.bullets.update()
+
+            # Get rid of bullets that have disappeared.
+            for bullet in self.bullets.copy():
+                if bullet.rect.bottom <= 0:
+                    self.bullets.remove(bullet)
+          # print(len(self.bullets))
+
+            
 
 
     def _check_events(self):
@@ -78,8 +92,9 @@ class AlienInvasion:
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
 
 
     def _update_screen(self):
@@ -101,5 +116,6 @@ if __name__ == '__main__':
 """
  TODO:
     1 ) Add main menu --> Start, controls, credit
+    
 
 """
