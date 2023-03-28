@@ -83,7 +83,7 @@ class AlienInvasion:
         for alien in self.aliens.sprites():
             if alien.check_edges():
                 self._change_fleet_direction()
-            break
+                break
 
     def _change_fleet_direction(self):
         """Drop the entire fleet and change the fleet's direction."""
@@ -173,6 +173,9 @@ if __name__ == '__main__':
 """
 TODO:
     1 ) Add main menu --> Start, controls, credit
+    2 ) Add destroy animations
+    3 ) Add powerups
+    4 ) Able to hold spacebar for firing
     
 FIXME: 
     1 ) In Fullscreen number of ships increases
