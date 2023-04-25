@@ -161,7 +161,7 @@ class AlienInvasion:
             # Get rid of any remaining aliens and bullets
             self.aliens.empty()
             self.bullets.empty()
-d
+
             # Create a new fleet and center the ship
             self._create_fleet()
             self.ship.center_ship()
