@@ -1,1 +1,3 @@
 Powerups: Lazer, Health pack
+Main Menu
+Fullscreen & windowed mode
