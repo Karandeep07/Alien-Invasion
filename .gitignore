@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Code Runner
-tempCodeRunnerFile.py
+/tempCodeRunnerFile.py
