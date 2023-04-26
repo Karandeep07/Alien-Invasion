@@ -175,6 +175,7 @@ class AlienInvasion:
             self.stats.game_active = True
             self.sb.prep_score()
             self.sb.prep_level()
+            self.sb.prep_ships()
 
             # Get rid of any remaining aliens and bullets
             self.aliens.empty()
@@ -224,8 +225,9 @@ class AlienInvasion:
         """Respond to ship being hit by an alien."""
         
         if self.stats.ships_left > 0:
-            # Decrement ships_left
+            # Decrement ships_left & update scoreboard
             self.stats.ships_left -= 1
+            self.sb.prep_ships()
 
             # Get rid of any remaining aliens and bullets
             self.aliens.empty()
@@ -284,6 +286,4 @@ TODO:
 FIXME: 
     1 ) In Fullscreen number of ships increases
         Find a different method for consistency 
-        
-        PAGE: 425
 """
