@@ -282,8 +282,10 @@ TODO:
     2 ) Add destroy animations
     3 ) Add powerups
     4 ) Able to hold spacebar for firing
+    5 ) Game Over Screen after 3 lifes gone
     
 FIXME: 
     1 ) In Fullscreen number of ships increases
         Find a different method for consistency 
+    2 ) Reduce life icon size
 """

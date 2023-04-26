@@ -44,3 +44,7 @@ class Ship(Sprite):
         """Center the Ship on Screen"""
         self.rect.midbottom = self.screen_rect.midbottom
         self.x = float(self.rect.x)
+
+    def life(self):
+        """Health icons"""
+        self.image = pygame.image.load('images/life.png').convert()
