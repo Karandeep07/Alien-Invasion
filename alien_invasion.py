@@ -18,9 +18,10 @@ class AlienInvasion:
         """Initialize the game & create game resources."""
         pygame.init()
         self.settings = Settings()
-        #
+        
         # self.screen = pygame.display.set_mode(
-        #     (self.settings.screen_width, self.settings.screen_height))
+        #     (self.settings.screen_width, self.settings.screen_height)
+        #     )
 
         # Fullscreen
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
@@ -57,7 +58,7 @@ class AlienInvasion:
         # Determine the number of rows of aliens that fit on the screen
         ship_height = self.ship.rect.height
         available_space_y = (self.settings.screen_height - 
-                             (3 * alien_height) - ship_height)
+                             (7 * alien_height) - ship_height)
         number_rows = available_space_y // (2 * alien_height)
         
         # Create the full fleet of aliens
@@ -143,9 +144,9 @@ class AlienInvasion:
             self._create_fleet()
             self.settings.increase_speed()
 
-        # Increase level.
-        self.stats.level += 1
-        self.sb.prep_level()
+            # Increase level.
+            self.stats.level += 1
+            self.sb.prep_level()
 
             
     def _check_events(self):
@@ -282,8 +283,7 @@ TODO:
     
 FIXME: 
     1 ) In Fullscreen number of ships increases
-        Find a different method for consistency
-    2) Reduce fleets
+        Find a different method for consistency 
         
-        PAGE: 417
+        PAGE: 425
 """
