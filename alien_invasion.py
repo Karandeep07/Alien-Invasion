@@ -288,4 +288,5 @@ FIXME:
     1 ) In Fullscreen number of ships increases
         Find a different method for consistency 
     2 ) Reduce life icon size
+    3 ) Add blank space start of screen where life all numbers reside
 """
