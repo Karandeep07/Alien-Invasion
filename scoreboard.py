@@ -17,8 +17,8 @@ class Scoreboard:
         # Font settings for scoring information.
         self.text_color = (255, 255, 255)
         self.font = pygame.font.SysFont(None, 48) 	
-        self.font2 = pygame.font.Font("fonts/Inika-Bold.ttf", 72)
-        self.font3 = pygame.font.Font("fonts/Inika-Bold.ttf", 38)
+        self.font2 = pygame.font.Font("fonts/Inika-Bold.ttf", 90)
+        self.font3 = pygame.font.Font("fonts/Inika-Bold.ttf", 45)
         self.font4 = pygame.font.Font("fonts/IBMPlexSans-Regular.ttf", 38)
         
 
@@ -29,6 +29,7 @@ class Scoreboard:
         self.prep_ships()
         self.mm_score()
         self.mm_text()
+        self.box()
 
 
     def prep_score(self):
@@ -51,48 +52,50 @@ class Scoreboard:
             self.screen.blit(self.level_image, self.level_rect)
             self.ships.draw(self.screen)
         elif not self.stats.game_active and not self.stats.game_over:
+            self.box()
             self.screen.blit(self.high_score_image, self.high_score_recta)
             self.screen.blit(self.score_image, self.score_recta)
-            self.screen.blit(self.text_highscore, (35,660))
+            self.screen.blit(self.text_highscore, (42,642))
             self.screen.blit(self.text_score, self.text_rect)
             self.screen.blit(self.text_title, self.text_title_rect)
         else:
+            self.box()
             self.screen.blit(self.high_score_image, self.high_score_recta)
             self.screen.blit(self.score_image, self.score_recta)
-            self.screen.blit(self.text_highscore, (35,660))
+            self.screen.blit(self.text_highscore, (42,642))
             self.screen.blit(self.text_score, self.text_rect)
             self.screen.blit(self.text_go, self.text_go_rect)
     
     def mm_score(self):
         # Center the high score at the bottom left of the screen.
         self.high_score_recta = self.high_score_image.get_rect()
-        self.high_score_recta.left = self.screen_rect.left + 35
-        self.high_score_recta.top = 620
+        self.high_score_recta.left = self.screen_rect.left + 38
+        self.high_score_recta.top = 584
 
         self.score_recta = self.score_image.get_rect()
-        self.score_recta.right = self.screen_rect.right - 250
-        self.score_recta.top = 620
+        self.score_recta.right = self.screen_rect.right - 280
+        self.score_recta.top = 584
 
     def mm_text(self):
         # Labels for Main menu
-        self.text_highscore = self.font3.render('HIGHSCORE', True,  (0,0,0), (255,255,255))
+        self.text_highscore = self.font3.render('HIGHSCORE', True, (0,0,0))
 
-        self.text_score = self.font3.render('YOURSCORE', True,  (0,0,0), (255,255,255))
+        self.text_score = self.font3.render('YOURSCORE', True, (0,0,0))
         self.text_rect = self.text_score.get_rect()
-        self.text_rect.right = self.screen_rect.right - 50
-        self.text_rect.top = 660
+        self.text_rect.right = self.screen_rect.right - 37
+        self.text_rect.top = 642
 
         # Title 
         self.text_title = self.font2.render('Alien Invasion', True, (0,0,0), (255,255,255))
         self.text_title_rect = self.text_title.get_rect()
         self.text_title_rect.center = self.screen_rect.center
-        self.text_title_rect.top = 150
+        self.text_title_rect.top = 120
 
         # Game Over
         self.text_go = self.font2.render('GAME OVER', True,  (0,0,0), (255,255,255))
         self.text_go_rect = self.text_go.get_rect()
         self.text_go_rect.center = self.screen_rect.center
-        self.text_go_rect.top = 150
+        self.text_go_rect.top = 120
 
     def prep_high_score(self):
         """Turn the high score into a rendered image."""
@@ -129,3 +132,8 @@ class Scoreboard:
             ship.rect.x = 10 + ship_number * ship.rect.width
             ship.rect.y = 10 # Change to bottom of screen
             self.ships.add(ship)
+
+    def box(self): # x,y,width,height
+        pygame.draw.rect(self.screen, (255, 255, 255), (300,97,680,147))
+        pygame.draw.rect(self.screen, (255, 255, 255), (38,651,262,41))
+        pygame.draw.rect(self.screen, (255, 255, 255), (980,651,262,41))

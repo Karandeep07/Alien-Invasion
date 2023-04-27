@@ -266,12 +266,12 @@ class AlienInvasion:
         self.sb.show_score()
 
         # fill screen with black
-        if not self.stats.game_active:
-            self.screen.fill((0,0,0))
-            self.sb.show_score()
+        #if not self.stats.game_active:
 
         # Draw the play button if the game is inactive
         if not self.stats.game_active:
+            self.screen.fill((0,0,0))
+            self.sb.show_score()
             self.play_button.draw_button()
 
         # Make the most recently drawn screen visible
