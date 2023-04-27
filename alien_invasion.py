@@ -19,14 +19,14 @@ class AlienInvasion:
         pygame.init()
         self.settings = Settings()
         
-        # self.screen = pygame.display.set_mode(
-        #     (self.settings.screen_width, self.settings.screen_height)
-        #     )
+        self.screen = pygame.display.set_mode(
+            (self.settings.screen_width, self.settings.screen_height)
+            )
 
         # Fullscreen
-        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-        self.settings.screen_width = self.screen.get_rect().width
-        self.settings.screen_height = self.screen.get_rect().height
+        # self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        # self.settings.screen_width = self.screen.get_rect().width
+        # self.settings.screen_height = self.screen.get_rect().height
 
         self.bg_image = pygame.transform.smoothscale(self.settings.bg_image, 
             self.screen.get_size())
@@ -241,6 +241,7 @@ class AlienInvasion:
             sleep(0.5)
         else:
             self.stats.game_active = False
+            self.stats.game_over = True
             pygame.mouse.set_visible(True)
 
     def _check_aliens_bottom(self):
@@ -264,7 +265,12 @@ class AlienInvasion:
         # Draw the score information
         self.sb.show_score()
 
-        # Draw te play button if the game is inactive
+        # fill screen with black
+        if not self.stats.game_active:
+            self.screen.fill((0,0,0))
+            self.sb.show_score()
+
+        # Draw the play button if the game is inactive
         if not self.stats.game_active:
             self.play_button.draw_button()
 

@@ -12,6 +12,9 @@ class GameStats:
         # High score (Never Reset)
         self.high_score = 0
 
+        # Game Over State
+        self.game_over = False
+
     def reset_stats(self):
         """Initialize statistics that can change during the game"""
         self.ships_left = self.settings.ship_limit
