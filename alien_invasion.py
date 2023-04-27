@@ -188,6 +188,7 @@ class AlienInvasion:
             # Hide the mouse cursor
             pygame.mouse.set_visible(False)
 
+
     def _check_keydown_events(self, event):
         """Respond to keypresses."""
         if event.key == pygame.K_d:
@@ -222,8 +223,7 @@ class AlienInvasion:
             self.bullets.add(new_bullet)
 
     def _ship_hit(self):
-        """Respond to ship being hit by an alien."""
-        
+        """Respond to ship being hit by an alien."""    
         if self.stats.ships_left > 0:
             # Decrement ships_left & update scoreboard
             self.stats.ships_left -= 1
