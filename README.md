@@ -1,3 +1,5 @@
+![Screenshot2](https://user-images.githubusercontent.com/41012770/235132011-010dcdc7-8b11-408a-8acf-fe3f4a01b707.png)
+
 # 👽 Alien Invasion
 Alien invasion is a game created using pygame inspired by 'Space Invaders' game.
 
