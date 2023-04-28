@@ -2,3 +2,5 @@ Powerups: Lazer, Health pack, Slow motion
 Main Menu
 Fullscreen & windowed mode
 Difficulty levels
+
+Add sounds for other effects

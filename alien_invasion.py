@@ -11,6 +11,7 @@ from button import Button
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+import sound_effects as se
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -138,6 +139,7 @@ class AlienInvasion:
                 self.stats.score += self.settings.alien_points * len(aliens)
             self.sb.prep_score()
             self.sb.check_high_score()
+            se.alien_sound.play()
 
         if not self.aliens:
             # Destroy existing bullets and create new fleet
@@ -201,7 +203,7 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
         elif event.key == pygame.K_q:
-            self._close_game()                       # TODO: Replace with exit option on main menu
+            self._close_game()                       
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
 
@@ -222,6 +224,7 @@ class AlienInvasion:
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
+            se.bullet_sound.play()
 
     def _ship_hit(self):
         """Respond to ship being hit by an alien."""    
@@ -302,4 +305,5 @@ FIXME:
         Find a different method for consistency 
     2 ) Reduce life icon size
     3 ) Add blank space start of screen where life all numbers reside
+    4 ) Maybe - Reduce explosion volume
 """
