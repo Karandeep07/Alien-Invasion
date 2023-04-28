@@ -28,6 +28,14 @@ loses a ship. If the player loses three ships, the game ends.
 
 ## ⚔ Let's play
 
+### Cloning the Repository
+
+```
+$ git clone https://github.com/Karandeep07/Alien-Invasion.git 
+
+$ cd Alien-Invasion
+```
+
 ### Running 
 
 ```
