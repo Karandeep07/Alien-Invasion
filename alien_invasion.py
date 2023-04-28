@@ -1,5 +1,6 @@
 import sys
 from time import sleep
+import json
 
 import pygame
 
@@ -153,7 +154,7 @@ class AlienInvasion:
         """Watch for keyboard and mouse events."""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                sys.exit()
+                self._close_game()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
                 self._check_play_button(mouse_pos)
@@ -200,7 +201,7 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
         elif event.key == pygame.K_q:
-            sys.exit()                        # TODO: Replace with exit option on main menu
+            self._close_game()                       # TODO: Replace with exit option on main menu
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
 
@@ -265,9 +266,6 @@ class AlienInvasion:
         # Draw the score information
         self.sb.show_score()
 
-        # fill screen with black
-        #if not self.stats.game_active:
-
         # Draw the play button if the game is inactive
         if not self.stats.game_active:
             self.screen.fill((0,0,0))
@@ -276,6 +274,15 @@ class AlienInvasion:
 
         # Make the most recently drawn screen visible
         pygame.display.flip()
+
+    def _close_game(self):
+        """Save high score and exit."""
+        saved_high_score = self.stats.get_saved_high_score()
+        if self.stats.high_score > saved_high_score:
+            with open('high_score.json', 'w') as f:
+                json.dump(self.stats.high_score, f)
+        
+        sys.exit()
 
 if __name__ == '__main__':
     # Make a game instance & run the game.
@@ -288,7 +295,7 @@ TODO:
     2 ) Add destroy animations
     3 ) Add powerups
     4 ) Able to hold spacebar for firing
-    5 ) Game Over Screen after 3 lifes gone
+    5 ) P to Pause
     
 FIXME: 
     1 ) In Fullscreen number of ships increases
