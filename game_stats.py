@@ -17,6 +17,9 @@ class GameStats:
         # Game Over State
         self.game_over = False
 
+        # Flag for highscore sound (reset every game)
+        self.highscore_se = 0
+
     def get_saved_high_score(self):
         """Gets high score from file, if it exists."""
         try:

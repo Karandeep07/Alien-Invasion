@@ -1,6 +1,8 @@
 import pygame.font
 from pygame.sprite import Group
 
+import sound_effects as se
+from game_stats import GameStats
 from ship import Ship
 
 class Scoreboard:
@@ -20,7 +22,6 @@ class Scoreboard:
         self.font2 = pygame.font.Font("fonts/Inika-Bold.ttf", 90)
         self.font3 = pygame.font.Font("fonts/Inika-Bold.ttf", 45)
         self.font4 = pygame.font.Font("fonts/IBMPlexSans-Regular.ttf", 38)
-        
 
         # Prepare the initial score image.
         self.prep_score()
@@ -31,6 +32,7 @@ class Scoreboard:
         self.mm_text()
         self.box()
 
+        
 
     def prep_score(self):
         """Turn the score into a rendered image."""
@@ -106,13 +108,16 @@ class Scoreboard:
         # Center the high score at the top of the screen.
         self.high_score_rect = self.high_score_image.get_rect()
         self.high_score_rect.centerx = self.screen_rect.centerx
-        self.high_score_rect.top = self.score_rect.top   
+        self.high_score_rect.top = self.score_rect.top 
+        
 
     def check_high_score(self):
         """Check to see if there's a new high score."""
         if self.stats.score > self.stats.high_score:
             self.stats.high_score = self.stats.score
+            self.stats.highscore_se = self.stats.highscore_se + 1
             self.prep_high_score()
+            
 
     def prep_level(self):
         """Turn the level into a rendered image."""

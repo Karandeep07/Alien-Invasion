@@ -87,6 +87,10 @@ class AlienInvasion:
                 self._update_bullets()
                 self._update_aliens()
 
+            if self.stats.game_active and self.stats.highscore_se == 1:
+                se.highscore_sound.play()
+                self.stats.highscore_se = 2
+
             self._update_screen()
             
     def _update_aliens(self):
@@ -191,6 +195,9 @@ class AlienInvasion:
             # Hide the mouse cursor
             pygame.mouse.set_visible(False)
 
+            # Play sound
+            se.play_button_sound.play()
+
 
     def _check_keydown_events(self, event):
         """Respond to keypresses."""
@@ -241,11 +248,16 @@ class AlienInvasion:
             self._create_fleet()
             self.ship.center_ship()
 
+            # Play sound
+            se.life_lost_sound.play()
+
             # Pause
             sleep(0.5)
         else:
             self.stats.game_active = False
             self.stats.game_over = True
+            se.game_over_sound.play()
+            self.stats.highscore_se = 0
             pygame.mouse.set_visible(True)
 
     def _check_aliens_bottom(self):
